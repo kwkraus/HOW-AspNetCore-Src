@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.IO;
 
 namespace HOW.AspNetCore.Mvc.WebApp.Controllers
 {
@@ -16,6 +17,11 @@ namespace HOW.AspNetCore.Mvc.WebApp.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Request.Query.ContainsKey("throw"))
+            {
+                throw new FileNotFoundException("File not found exception thrown in index.chtml");
+            }
+
             return View();
         }
 
