@@ -1,4 +1,5 @@
 using HOW.AspNetCore.Data.Contexts;
+using HOW.AspNetCore.Services.Caching;
 using HOW.AspNetCore.Services.Domains;
 using HOW.AspNetCore.Services.Interfaces;
 using HOW.AspNetCore.Services.Options;
@@ -36,6 +37,7 @@ namespace HOW.AspNet.WebApp
 
             services.AddScoped<IProductService, ProductService>();
             services.AddTransient<IStorageService, AzureBlobService>();
+            services.AddSingleton<MyMemoryCache>();
 
 
             //uncomment to demonstrate lifetime and registration options
