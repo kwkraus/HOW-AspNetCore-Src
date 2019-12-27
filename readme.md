@@ -1,3 +1,3 @@
-# Session 4: ASP.NET Core Working Services
+# Session : ASP.NET Core Production Ready Apps
 
-## This branch contains the source for the Working Services Session
+## This branch contains the source for the Production Ready Apps Session
