@@ -1,56 +1,42 @@
 ﻿@page
 @model HOW.AspNetCore.Razor.WebApp.Pages.Products.IndexModel
-@using HOW.AspNetCore.Razor.WebApp.Entities
+
 @{
     ViewData["Title"] = "Products";
 }
 
-<h1>Products</h1>
-<p>@DateTime.Now</p>
-<p>Products last updated: @(DateTime.Now - TimeSpan.FromDays(7))</p>
-
-@{ 
-    var newProduct = new Product
-    {
-        Name = "Chewy Bear",
-        Price = 10.99M
-    };
-
-    Model.Products.Add(newProduct);
-}
+<h1>Product List</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-success">Create New Product</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Name)
+                @Html.DisplayNameFor(model => model.Products[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Products.FirstOrDefault().Price)
+                @Html.DisplayNameFor(model => model.Products[0].Price)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Products)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }
+@foreach (var item in Model.Products) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-
