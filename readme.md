@@ -1,3 +1,3 @@
-# Session 3: ASP.NET Core Working with Data
+# Session 4: ASP.NET Core Working Services
 
-## This branch contains the source for the Working with Data Session
+## This branch contains the source for the Working Services Session
