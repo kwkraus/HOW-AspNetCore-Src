@@ -30,6 +30,8 @@ namespace HOW.AspNet.WebApp
         {
             services.AddRazorPages();
 
+            services.AddResponseCaching();
+
             services.AddDbContext<HowDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -124,6 +126,7 @@ namespace HOW.AspNet.WebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseResponseCaching();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

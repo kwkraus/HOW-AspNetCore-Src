@@ -26,6 +26,8 @@ namespace HOW.AspNetCore.Mvc.WebApp
         {
             services.AddControllersWithViews();
 
+            services.AddResponseCaching();
+
             services.AddDbContext<HowDataContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -62,6 +64,7 @@ namespace HOW.AspNetCore.Mvc.WebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseResponseCaching();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
