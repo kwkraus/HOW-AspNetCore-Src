@@ -5,6 +5,15 @@ on:
     branches: [ Session1 ]
   pull_request:
     branches: [ Session1 ]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
+        required: false
 
 jobs:
   build:
